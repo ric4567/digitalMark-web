@@ -4,13 +4,20 @@ import React from "react";
 
 typeof window !== "undefined" && require("boxicons");
 const Navigation = () => {
+  console.log(location.pathname);
   return (
     <nav className="nav">
       <ul className="md:flex">
-        <li>
+        <li
+          className={
+            location.pathname === "/" || location.pathname.includes("Project")
+              ? "font-bold"
+              : ""
+          }
+        >
           <Link to="/">Projetos</Link>
         </li>
-        <li>
+        <li className={location.pathname.includes("Client") ? "font-extrabold" : ""}>
           <Link to="/ListClient">Clientes</Link>
         </li>
       </ul>
