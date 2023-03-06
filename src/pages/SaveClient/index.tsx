@@ -13,10 +13,10 @@ const SaveClient = () => {
   const [technology, setTechnology] = useState<string>();
   const [project, setProject] = useState<string>();
   useEffect(() => {
+    setLoading(true);
     getProjects();
   }, []);
   useEffect(() => {
-    setLoading(true);
     const id =
       typeof window !== "undefined"
         ? new URLSearchParams(location.search).get("id")
@@ -48,6 +48,7 @@ const SaveClient = () => {
     }
   };
   const saveClient = async () => {
+    setLoading(true);
     try {
       const response = id
         ? await api.put(`/api/client/${id}`, {
@@ -69,6 +70,7 @@ const SaveClient = () => {
     } catch (error) {
       console.log(error);
     }
+    setLoading(false);
   };
   return (
     <Layout>
@@ -111,7 +113,7 @@ const SaveClient = () => {
               <option value={p.id}>{p.name}</option>
             ))}
           </select>
-          <button disabled={!name} onClick={() => saveClient()}>
+          <button disabled={!name || !technology || !project} onClick={() => saveClient()}>
             Salvar
           </button>
         </div>

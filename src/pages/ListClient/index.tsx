@@ -22,6 +22,7 @@ const ListClient = () => {
     setLoading(false);
   };
   const deleteClient = async (id: string) => {
+    setLoading(true)
     try {
       const response = await api.delete(`/api/client/${id}`);
       if (response.data.isSuccess) {
@@ -33,6 +34,7 @@ const ListClient = () => {
     } catch (error) {
       console.log(error);
     }
+    setLoading(false)
   };
 
   return (

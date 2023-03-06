@@ -23,6 +23,7 @@ const IndexPage = () => {
     setLoading(false);
   };
   const deleteProject = async (id: string) => {
+    setLoading(true)
     try {
       const response = await api.delete(`/api/project/${id}`);
       if (response.data.isSuccess) {
@@ -34,6 +35,7 @@ const IndexPage = () => {
     } catch (error) {
       console.log(error);
     }
+    setLoading(false)
   };
 
   return (
