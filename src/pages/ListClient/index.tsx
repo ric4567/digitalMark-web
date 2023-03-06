@@ -21,6 +21,19 @@ const ListClient = () => {
     }
     setLoading(false);
   };
+  const deleteClient = async (id: string) => {
+    try {
+      const response = await api.delete(`/api/client/${id}`);
+      if (response.data.isSuccess) {
+        alert("Cliente excluído com sucesso!");
+        await getData();
+      } else {
+        alert(response.data.notifications[0].message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Layout>
@@ -38,6 +51,12 @@ const ListClient = () => {
           <tr>
             <LoadingRing />
           </tr>
+        ) : data.length === 0 ? (
+          <tr>
+            <div style={{ position: "absolute", padding: "16px" }}>
+              Nenhum cliente.
+            </div>
+          </tr>
         ) : (
           data.map((c) => (
             <tr>
@@ -48,6 +67,10 @@ const ListClient = () => {
                 <Link to={`/SaveClient?id=${c.id}`}>
                   <i className="bx bxs-edit text-xl"></i>
                 </Link>
+                <i
+                  onClick={() => deleteClient(c.id)}
+                  className="bx bx-trash ml-3 text-xl cursor-pointer"
+                ></i>
               </td>
             </tr>
           ))
