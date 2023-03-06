@@ -1,4 +1,67 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css");
 
+button {
+  background-color: #8ab2f2;
+  font-weight: 500;
+  height: 46px;
+  width: 132px;
+  border-radius: 5px;
+}
+button:disabled {
+  background-color: #bbc4d3 !important;
+  color: whitesmoke;
+  cursor: default;
+}
+button:hover {
+  background-color: #659bf3;
+  height: 46px;
+  width: 132px;
+  border-radius: 5px;
+}
+table {
+  margin-top: 24px;
+  width: 100%;
+  border-color: whitesmoke;
+  border-width: 3px;
+}
+tr {
+  width: 100%;
+  height: 48px;
+  border-left-width: 3px;
+}
+td {
+  text-align: center;
+}
+th {
+  background-color: whitesmoke;
+}
+h1 {
+  font-size: 32px;
+  margin: 32px 0;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+label {
+  font-size: 24px;
+  font-weight: 500;
+}
+input,
+select {
+  font-size: 18px;
+  margin-top: 8px;
+  padding: 4px 8px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 3px;
+  margin-bottom: 32px;
+}
+input:active {
+  border-color: #8ab2f2 !important;
+}
