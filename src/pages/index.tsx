@@ -22,6 +22,19 @@ const IndexPage = () => {
     }
     setLoading(false);
   };
+  const deleteProject = async (id: string) => {
+    try {
+      const response = await api.delete(`/api/project/${id}`);
+      if (response.data.isSuccess) {
+        alert("Projeto excluído com sucesso!");
+        await getData();
+      } else {
+        alert(response.data.notifications[0].message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Layout>
@@ -39,6 +52,12 @@ const IndexPage = () => {
           <tr>
             <LoadingRing />
           </tr>
+        ) : data.length === 0 ? (
+          <tr>
+            <div style={{ position: "absolute", padding: "16px" }}>
+              Nenhum projeto.
+            </div>
+          </tr>
         ) : (
           data.map((c) => (
             <tr>
@@ -49,6 +68,10 @@ const IndexPage = () => {
                 <Link to={`/SaveProject?id=${c.id}`}>
                   <i className="bx bxs-edit text-xl"></i>
                 </Link>
+                <i
+                  onClick={() => deleteProject(c.id)}
+                  className="bx bx-trash ml-3 text-xl cursor-pointer"
+                ></i>
               </td>
             </tr>
           ))
