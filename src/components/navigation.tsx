@@ -5,16 +5,13 @@ import React from "react";
 typeof window !== "undefined" && require("boxicons");
 const Navigation = () => {
   return (
-    <nav className="nav md:inline-flex">
+    <nav className="nav">
       <ul className="md:flex">
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">Projetos</Link>
         </li>
         <li>
           <Link to="/ListClient">Clientes</Link>
-        </li>
-        <li>
-          <Link to="/ListProject">Projetos</Link>
         </li>
       </ul>
     </nav>
