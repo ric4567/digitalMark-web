@@ -1,0 +1,9 @@
+nav {
+  display: flex;
+  margin-right: 32px;
+  margin-top: 32px;
+}
+li {
+  color: white;
+  margin-right: 24px;
+}
